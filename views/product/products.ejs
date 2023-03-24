@@ -1,0 +1,327 @@
+<%- include('../layout/header.ejs',{title:title}) %>
+    <div class="container-fluid pt-2">
+        <div class="row form-control">
+            <form action="" method="get" class="row row-cols-lg-auto align-items-center">
+                <div class="row col-sm-12 col-md-3 col-lg-3 m-2">
+                  <input type="text"
+                      class="form-control form-control-sm" name="search_name" id="" aria-describedby="helpId" placeholder="Tìm kiếm sản phẩm">
+                </div>
+                
+                <div class="row col-sm-12 col-md-3 col-lg-3 m-2">
+                    <select class="form-select form-select-sm col-sm-12 col-md-4 col-lg-3"
+                        aria-label=".form-select-sm example">
+                        <option selected> Tìm theo loại</option>
+                        <option value="1">Nam</option>
+                        <option value="2">Nữ</option>
+                    </select>
+
+                </div>
+                <div class="row col-sm-12 col-md-3 col-lg-3 m-2">
+                    <select class="form-select form-select-sm col-sm-12 col-md-4 col-lg-3"
+                        aria-label=".form-select-sm example">
+                        <option selected>Tìn theo giá </option>
+                        <option value="1">Dưới 100.000đ</option>
+                        <option value="2">100.000đ đến 400.000đ </option>
+                        <option value="3">Trên 400.000đ</option>
+                    </select>
+
+                </div>
+                <button class="btn btn-primary  col-sm-2 col-md-2 col-lg-1 " type="submit">Tìm kiếm</button>
+            </form>
+
+        </div>
+
+        <div class="row d-flex ms-3">
+            <%products.forEach((item)=>{%>
+                <div class="card col-sm-5 col-md-3 col-lg-2 shadow-sm m-3 "
+                    style="background-color: white; padding: 0px;">
+                    <div class="card-body">
+                        <div class="image">
+                            <img style="width: 100%; height: 100%;" src="<%= item.image %>" alt="">
+                        </div>
+                        <div class="nameSp d-flex">
+                            <span class="text-break">
+                                <%= item.name %>
+                            </span>
+
+                        </div>
+                        <div class="price">
+                            Giá: <%= item.price %>
+                        </div>
+                        <div style="font-size: 12px;" class="category text-dark text-opacity-75 text mt-1 mb-1">
+                            Thể loại: <%= item.category %>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-around mt-2 mb-1">
+                            <div style="margin-right: 0px;" class="modal-update col-3 ">
+                                <button style="font-size: 8px;" type="button" class="btn btn-outline-success col-12 "
+                                    data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    Sửa
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <form action="" method="post">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Update
+                                                        Product</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="m-3">
+                                                        <span>ID</span>
+                                                        <input class="form-control" type="text" placeholder="ID "
+                                                            name="idProductUpdate" value="<%=item.id%>" disabled
+                                                            aria-label="default input example">
+                                                    </div>
+                                                    <div class="m-3">
+                                                        <span>Tên sản phẩm</span>
+                                                        <input class="form-control" type="text"
+                                                            placeholder="Tên sản phẩm " name="nameProductUpdate"
+                                                            value="<%=item.name%>" aria-label="default input example">
+                                                    </div>
+                                                    <div class="m-3">
+                                                        <span>Giá sản phẩm</span>
+                                                        <input class="form-control" type="number"
+                                                            placeholder="Giá sản phẩm " name="priceProductUpdate"
+                                                            value="<%=item.price%>" aria-label="default input example">
+                                                    </div>
+                                                    <div class="m-3">
+                                                        <span>Số lượng</span>
+                                                        <input class="form-control" type="number" placeholder="Số lượng"
+                                                            name="countProductUpdate" value="<%=item.count%>"
+                                                            aria-label="default input example">
+                                                    </div>
+
+                                                    <div class="m-3">
+                                                        <span>Id khách hàng</span>
+                                                        <input class="form-control" type="text"
+                                                            placeholder="Mã khách hàng" name="idHkUpdate"
+                                                            value="<%= item.idKh %>" aria-label="default input example">
+                                                    </div>
+                                                    <div class="m-3">
+                                                        <span>Tên khách hàng</span>
+                                                        <input class="form-control" type="text"
+                                                            placeholder="Tên Khách hàng" name="nameHkupdate"
+                                                            value="<%= item.nameKh %>"
+                                                            aria-label="default input example">
+                                                    </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Hủy</button>
+                                                    <button type="submit" class="btn btn-primary">Cập
+                                                        nhật</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin-right: 0px;" class="modal-update col-3 ">
+                                <button style="font-size: 8px;" type="button" class="btn btn-outline-danger col-12"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    Xóa
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <form action="" method="post">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Xóa sản
+                                                        phẩm
+                                                    </h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h5>Bạn có muốn xóa sản phẩm này không</h5>
+                                                    <input type="text" name="id" value="<%= item.id %>"
+                                                        style="display: none;">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Hủy</button>
+                                                    <button type="submit" class="btn btn-primary">Xóa</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin-right: 0px;" class="modal-update col-3 ">
+                                <button style="font-size: 5px;" type="button" class="btn btn-outline-secondary col-12 "
+                                    data-bs-toggle="modal" data-bs-target="#itemDetail">
+                                    Chi tiết
+                                </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="itemDetail" data-bs-backdrop="static"
+                                    data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <form action="" method="post">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                                                        Chi tiết</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="m-3">
+                                                        <span>ID</span>
+                                                        <input class="form-control" type="text" placeholder="ID "
+                                                            name="idProductUpdate" value="<%=item.id%>" disabled
+                                                            aria-label="default input example">
+                                                    </div>
+                                                    <div class="m-3">
+                                                        <span>Tên sản phẩm</span>
+                                                        <input class="form-control" type="text"
+                                                            placeholder="Tên sản phẩm " name="nameProductUpdate"
+                                                            value="<%=item.name%>" aria-label="default input example">
+                                                    </div>
+                                                    <div class="m-3">
+                                                        <span>Giá sản phẩm</span>
+                                                        <input class="form-control" type="number"
+                                                            placeholder="Giá sản phẩm " name="priceProductUpdate"
+                                                            value="<%=item.price%>" aria-label="default input example">
+                                                    </div>
+                                                    <div class="m-3">
+                                                        <span>Số lượng</span>
+                                                        <input class="form-control" type="number" placeholder="Số lượng"
+                                                            name="countProductUpdate" value="<%=item.count%>"
+                                                            aria-label="default input example">
+                                                    </div>
+                                                    <div class="m-3">
+                                                        <span>Thể loại</span>
+                                                        <input class="form-control" type="text"
+                                                            placeholder="Mã khách hàng" name="idHkUpdate"
+                                                            value="<%= item.category %>"
+                                                            aria-label="default input example">
+                                                    </div>
+                                                    <div class="m-3">
+                                                        <span>Id khách hàng</span>
+                                                        <input class="form-control" type="text"
+                                                            placeholder="Mã khách hàng" name="idHkUpdate"
+                                                            value="<%= item.idKh %>" aria-label="default input example">
+                                                    </div>
+                                                    <div class="m-3">
+                                                        <span>Tên khách hàng</span>
+                                                        <input class="form-control" type="text"
+                                                            placeholder="Tên Khách hàng" name="nameHkupdate"
+                                                            value="<%= item.nameKh %>"
+                                                            aria-label="default input example">
+                                                    </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Đóng</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <%})%>
+                    <div class="row ">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+        </div>
+        <div style="margin-right: 0px;" class="modal-update col-4">
+            <button type="button" class="floating-btn" data-bs-toggle="modal" data-bs-target="#modalAdd">
+                <img src="/images/add.png" alt="">
+                <div class="text">
+
+                    Thêm mới
+                </div>
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="modalAdd" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form action="" method="post">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Update
+                                    Product</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="m-3">
+                                    <input class="form-control" type="text" placeholder="ID " name="IdProductAdd"
+                                        value="" aria-label="default input example">
+                                </div>
+                                <div class="m-3">
+                                    <input class="form-control" type="text" placeholder="Tên sản phẩm "
+                                        name="nameProductAdd" value="" aria-label="default input example">
+                                </div>
+                                <div class="m-3">
+                                    <input class="form-control" type="number" placeholder="Giá sản phẩm "
+                                        name="priceProductAdd" value="" aria-label="default input example">
+                                </div>
+                                <div class="m-3">
+                                    <input class="form-control" type="number" placeholder="Số lượng"
+                                        name="countProductAdd" value="" aria-label="default input example">
+                                </div>
+
+                                <select class="form-select mt-3 mb-3" name="category"
+                                    aria-label="Default select example">
+                                    <option selected value="Nam">Áo Nam</option>
+                                    <option value="Nu">Áo Nữ</option>
+
+                                </select>
+                                <div class="m-3">
+                                    <input class="form-control" type="text" placeholder="Mã khách hàng" name="idHk"
+                                        value="" aria-label="default input example">
+                                </div>
+                                <div class="m-3">
+                                    <input class="form-control" type="text" placeholder="Tên Khách hàng" name="nameHk"
+                                        value="" aria-label="default input example">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label">Tải ảnh lên</label>
+                                    <input class="form-control" name="image" type="file" id="formFile">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="submit" class="btn btn-primary">Thêm mới</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('../layout/footer.ejs') %>

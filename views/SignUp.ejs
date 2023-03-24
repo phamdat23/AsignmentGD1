@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet"
+        href="https://demo.hasthemes.com/adomx-preview/light/assets/css/vendor/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adomx-preview/light/assets/css/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adomx-preview/light/assets/css/vendor/themify-icons.css">
+    <link rel="stylesheet"
+        href="https://demo.hasthemes.com/adomx-preview/light/assets/css/vendor/cryptocurrency-icons.css">
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adomx-preview/light/assets/css/plugins/plugins.css">
+
+    <!-- Helper CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adomx-preview/light/assets/css/helper.css">
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="https://demo.hasthemes.com/adomx-preview/light/assets/css/style.css">
+
+    <!-- Custom Style CSS Only For Demo Purpose -->
+    <link id="cus-style" rel="stylesheet"
+        href="https://demo.hasthemes.com/adomx-preview/light/assets/css/style-primary.css">
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <!-- Content Body Start -->
+        <div class="content-body m-0 p-0">
+
+            <div class="login-register-wrap">
+                <div class="row">
+
+                    <div class="d-flex align-self-center justify-content-center order-2 order-lg-1 col-lg-5 col-12">
+                        <div class="login-register-form-wrap">
+
+                            <div class="content">
+                                <h1>Sign Up</h1>
+
+                            </div>
+
+                            <div class="login-register-form">
+                                <form action="" method="post">
+                                    <div class="row">
+
+                                        <div class="col-12 mb-10">
+                                            <input name="fullname" value="<%= acc.fullname %>" class="form-control" type="text"
+                                                placeholder="Fullname">
+                                            <span style="color: red;"><%= erFullname %></span>
+                                        </div>
+                                        <div class="col-12 mb-10">
+                                            <input name="email" value="<%=acc.email  %>" class="form-control" type="text" placeholder="Email">
+                                            <span style="color: red;"><%= erEmail %></span>
+                                        </div>
+                                        <div class="col-12 mb-10">
+                                            <input name="username"value="<%=acc.username  %>" class="form-control" type="text"
+                                                placeholder="Username">
+                                                <span style="color: red;"><%= erUsername %></span>
+                                        </div>
+                                        <div class="col-12 mb-10">
+                                            <input name="passwd"value="<%=acc.password  %>" class="form-control" type="password"
+                                                placeholder="Password">
+                                                <span style="color: red;"><%=erPasswd  %></span>
+                                        </div>
+                                        <div class="col-12 mb-10">
+                                            <input name="repasswd"value="<%= acc.repass %>" class="form-control" type="password"
+                                                placeholder="Retype Password">
+                                                <span style="color: red;"><%= erRePass %></span>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="formFile" class="form-label">Tải ảnh lên</label>
+                                            <input name="avata" class="form-control" type="file" id="formFile">
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="row justify-content-between">
+                                                <div class="col-auto mb-15">Already have account? <a href="/">Login
+                                                        Now.</a></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mt-10"><button
+                                                class="button button-primary button-outline">sign up</button></div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="login-register-bg order-2 order-lg-2 col-lg-7 col-12">
+                        <div class="content">
+                            <h1>Sign up</h1>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div><!-- Content Body End -->
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="https://demo.hasthemes.com/adomx-preview/light/assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="https://demo.hasthemes.com/adomx-preview/light/assets/js/vendor/jquery-3.3.1.min.js"></script>
+</body>
+
+</html>

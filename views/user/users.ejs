@@ -1,0 +1,214 @@
+<%- include('../layout/header.ejs', {title:title}) %>
+    <div class="container-fluid pt-3">
+        <div class="row">
+            <table id="example" class="table table-striped" style="width:100%">
+                <thead>
+                    <tr class="table-primary">
+                        <th>ID</th>
+                        <th>Username</th>
+                       
+                      
+                       
+                        <th>Phone</th>
+                        <th>Active</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%users.forEach((item)=>{%>
+                        <tr class="">
+                            <td>
+
+                                <%=item.id%>
+                            </td>
+
+                            <td>
+                                <%=item.username%>
+                            </td>
+                          
+                           
+                            <td>
+                                <%=item.phone%>
+                            </td>
+                            
+                            <td>
+                                <div class="row d-flex">
+                                    <div style="margin-right: 0px;" class="modal-update col-4">
+                                        <button type="button" class="btn btn-outline-success col-12 "
+                                            data-bs-toggle="modal" data-bs-target="#modalUpdate">
+                                            Sửa
+                                        </button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="modalUpdate" data-bs-backdrop="static"
+                                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <form action="" method="post">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Update
+                                                                Product</h1>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="m-3">
+                                                                <span>Id</span>
+                                                                <input class="form-control" type="text" placeholder="Id"
+                                                                    name="idUpdate" value=" <%=item.id%>" disabled
+                                                                    aria-label="default input example">
+                                                            </div>
+                                                            <div class="m-3">
+                                                                <span>Username</span>
+                                                                <input class="form-control" type="text"
+                                                                    placeholder="Username " name="usernameUpdate"
+                                                                    value="<%=item.username%>"
+                                                                    aria-label="default input example">
+                                                            </div>
+                                                            <div class="m-3">
+                                                                <span>Password</span>
+                                                                <input class="form-control" type="password"
+                                                                    placeholder="Password " name="passwdUpdate"
+                                                                    value=" <%=item.password%> "
+                                                                    aria-label="default input example">
+                                                            </div>
+                                                            <div class="m-3">
+                                                                <span>Email</span>
+                                                                <input class="form-control" type="email"
+                                                                    placeholder="Email" name="emailUpdate"
+                                                                    value=" <%=item.email%> "
+                                                                    aria-label="default input example">
+                                                            </div>
+                                                            <div class="m-3">
+                                                                <span>Phone</span>
+                                                                <input class="form-control" type="phone"
+                                                                    placeholder="Phone" name="phoneUpdate"
+                                                                    value=" <%=item.phone%> "
+                                                                    aria-label="default input example">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="formFile" class="form-label">Tải ảnh
+                                                                    lên</label>
+                                                                <input class="form-control" name="imageUpdate"
+                                                                    type="file" id="formFile">
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Hủy</button>
+                                                            <button type="button" class="btn btn-primary">Cập
+                                                                nhật</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-right: 0px;" class="modal-update col-4">
+                                        <button type="button" class="btn btn-outline-danger col-12"
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            Xóa
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <form action="" method="post">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Xóa sản
+                                                                phẩm
+                                                            </h1>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <h5>Bạn có muốn xóa sản phẩm này không</h5>
+                                                            <input type="text" name="id" value="<%= item.id %>"
+                                                                style="display: none;">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Hủy</button>
+                                                            <button type="submit" class="btn btn-primary">Xóa</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+                        <%})%>
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div style="margin-right: 0px;" class="modal-update col-4">
+            <button type="button" class=" floating-btn  " data-bs-toggle="modal" data-bs-target="#modaAdd">
+                <img src="/images/add.png" alt="">
+                <div class="text">
+
+                    Thêm mới
+                </div>
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="modaAdd" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form action="" method="post">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Thêm mới</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="m-3">
+                                    <span>Username</span>
+                                    <input class="form-control" type="text" placeholder="Id " name="id" value=""
+                                        aria-label="default input example">
+                                </div>
+                                <div class="m-3">
+                                    <span>Username</span>
+                                    <input class="form-control" type="text" placeholder="Username " name="username"
+                                        value="" aria-label="default input example">
+                                </div>
+                                <div class="m-3">
+                                    <span>Password</span>
+                                    <input class="form-control" type="password" placeholder="Password " name="passwd"
+                                        value="" aria-label="default input example">
+                                </div>
+                                <div class="m-3">
+                                    <span>Email</span>
+                                    <input class="form-control" type="email" placeholder="Email" name="email" value=""
+                                        aria-label="default input example">
+                                </div>
+                                <div class="m-3">
+                                    <span>Phone</span>
+                                    <input class="form-control" type="phone" placeholder="Phone" name="phone" value=""
+                                        aria-label="default input example">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label">Tải ảnh lên</label>
+                                    <input class="form-control" name="image" type="file" id="formFile">
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Thêm Mới</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('../layout/footer.ejs') %>
